@@ -31,10 +31,10 @@ func (db *MemDb) AddUser(u *User) *User {
 	if !ok {
 		db.kvsUsers[u.Username] = len(db.users)
 		db.users = append(db.users, u)
-	} else {
-		db.users[ind] = u
+		return db.users[len(db.users)-1]
 	}
 
+	db.users[ind] = u
 	return db.users[ind]
 }
 
